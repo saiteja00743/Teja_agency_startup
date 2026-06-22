@@ -1,0 +1,17 @@
+# Railway deployment configuration
+# Deploy: connect GitHub repo to Railway, it auto-detects this file
+
+[build]
+builder = "dockerfile"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+startCommand = "gunicorn app.main:app --config gunicorn.conf.py"
+healthcheckPath = "/api/health"
+healthcheckTimeout = 300
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3
+
+[environments]
+  [environments.production]
+  variables = { APP_ENV = "production" }

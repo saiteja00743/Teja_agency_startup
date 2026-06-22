@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Teja Labs | Engineered Luxury Digital Products</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Geist:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .gradient-border {
+            position: relative;
+            border: 1px solid transparent;
+            background-clip: padding-box;
+        }
+        .gradient-border::after {
+            content: "";
+            position: absolute;
+            top: -1px; left: -1px; right: -1px; bottom: -1px;
+            z-index: -1;
+            border-radius: inherit;
+            background: linear-gradient(135deg, #6366F1 0%, #F97316 100%);
+            opacity: 0.1;
+            transition: opacity 0.3s ease;
+        }
+        .gradient-border:hover::after {
+            opacity: 0.3;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed-dim": "#ffb690",
+                      "secondary-fixed": "#ffdbca",
+                      "surface-container-high": "#e8e8e7",
+                      "on-error": "#ffffff",
+                      "tertiary-fixed-dim": "#c0c1ff",
+                      "surface-dim": "#dadad9",
+                      "primary": "#000000",
+                      "on-tertiary-fixed": "#07006c",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-low": "#f3f4f3",
+                      "surface-bright": "#f9f9f8",
+                      "on-secondary-fixed-variant": "#783200",
+                      "primary-fixed-dim": "#bec6e0",
+                      "inverse-on-surface": "#f1f1f0",
+                      "inverse-primary": "#bec6e0",
+                      "outline-variant": "#c6c6cd",
+                      "surface-tint": "#565e74",
+                      "error-container": "#ffdad6",
+                      "outline": "#76777d",
+                      "tertiary-container": "#07006c",
+                      "on-primary-container": "#7c839b",
+                      "primary-container": "#131b2e",
+                      "on-error-container": "#93000a",
+                      "tertiary": "#000000",
+                      "background": "#f9f9f8",
+                      "on-secondary-container": "#5c2400",
+                      "secondary": "#9d4300",
+                      "on-tertiary": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "on-surface": "#1a1c1c",
+                      "on-tertiary-container": "#7073ff",
+                      "on-primary-fixed": "#131b2e",
+                      "secondary-container": "#fd761a",
+                      "on-tertiary-fixed-variant": "#2f2ebe",
+                      "surface-variant": "#e2e2e2",
+                      "surface-container": "#eeeeed",
+                      "tertiary-fixed": "#e1e0ff",
+                      "inverse-surface": "#2f3130",
+                      "surface": "#f9f9f8",
+                      "error": "#ba1a1a",
+                      "on-background": "#1a1c1c",
+                      "on-primary-fixed-variant": "#3f465c",
+                      "on-secondary": "#ffffff",
+                      "on-surface-variant": "#45464d",
+                      "on-secondary-fixed": "#341100",
+                      "surface-container-highest": "#e2e2e2",
+                      "primary-fixed": "#dae2fd"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xl": "80px",
+                      "gutter": "24px",
+                      "lg": "48px",
+                      "2xl": "120px",
+                      "xs": "8px",
+                      "base": "4px",
+                      "container-max": "1280px",
+                      "sm": "16px",
+                      "md": "24px"
+              },
+              "fontFamily": {
+                      "label-md": ["Geist"],
+                      "display-lg-mobile": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "display-2xl": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "label-sm-mono": ["Geist"]
+              },
+              "fontSize": {
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "display-lg-mobile": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-md": ["30px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "display-2xl": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                      "label-sm-mono": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 left-1/2 -translate-x-1/2 w-[90%] max-w-container-max mt-6 rounded-full bg-white/70 backdrop-blur-xl border border-white/20 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)] z-50 transition-all duration-300">
+<nav class="flex justify-between items-center px-8 py-4">
+<div class="flex items-center gap-xs">
+<img alt="Teja Labs Logo" class="h-8 md:h-10 w-auto object-contain" src="data:image/png;base64,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"/>
+</div>
+<div class="hidden md:flex items-center gap-lg">
+<a class="font-label-md text-label-md uppercase tracking-widest text-primary font-bold hover:scale-105 transition-all" href="#home">Home</a>
+<a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-secondary transition-all" href="#services">Services</a>
+<a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-secondary transition-all" href="#portfolio">Portfolio</a>
+<a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-secondary transition-all" href="#process">Process</a>
+<a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-secondary transition-all" href="#pricing">Pricing</a>
+</div>
+<div class="flex items-center gap-md">
+<a class="bg-primary text-on-primary px-sm py-xs rounded-full font-label-md text-label-md hover:scale-105 active:scale-95 transition-all duration-200" href="#contact">Book a Call</a>
+<button class="md:hidden flex items-center">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative pt-32 pb-2xl px-md overflow-hidden min-h-screen flex items-center" id="home">
+<div class="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-2 gap-xl items-center">
+<div class="z-10 text-center lg:text-left">
+<div class="inline-flex items-center gap-xs bg-primary-fixed px-base py-base pr-sm rounded-full mb-md animate-fade-in">
+<span class="bg-primary text-on-primary text-[10px] font-bold px-xs py-1 rounded-full uppercase tracking-tighter">New</span>
+<p class="font-label-sm-mono text-label-sm-mono text-on-primary-fixed-variant">AI-Driven Automation for 2024</p>
+</div>
+<h1 class="font-display-2xl text-display-lg-mobile md:text-display-2xl text-primary leading-tight mb-md">
+                        Build Digital Products That <span class="text-secondary italic">Scale.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-lg max-w-xl mx-auto lg:mx-0">
+                        We design websites, mobile apps, AI agents, and automation systems that help businesses grow faster with precision engineering.
+                    </p>
+<div class="flex flex-col sm:flex-row items-center gap-md justify-center lg:justify-start">
+<a class="bg-primary text-on-primary px-lg py-sm rounded-xl font-headline-md text-body-lg hover:scale-105 active:scale-95 transition-all shadow-lg w-full sm:w-auto text-center" href="#contact">
+                            Book Free Consultation
+                        </a>
+<a class="border border-outline px-lg py-sm rounded-xl font-headline-md text-body-lg hover:bg-surface-container-low transition-all w-full sm:w-auto text-center" href="#portfolio">
+                            View Portfolio
+                        </a>
+</div>
+<div class="mt-xl pt-lg border-t border-surface-variant">
+<p class="font-label-sm-mono text-label-sm-mono text-outline uppercase tracking-widest mb-md">Trusted by innovators</p>
+<div class="flex flex-wrap items-center justify-center lg:justify-start gap-lg opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+<div class="font-display-lg font-bold">VERCEL</div>
+<div class="font-display-lg font-bold">STRIPE</div>
+<div class="font-display-lg font-bold">LINEAR</div>
+<div class="font-display-lg font-bold">FRAMER</div>
+</div>
+</div>
+</div>
+<div class="relative hidden lg:block">
+<div class="absolute -top-20 -right-20 w-80 h-80 bg-secondary/10 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-20 -left-20 w-80 h-80 bg-tertiary-container/10 rounded-full blur-3xl"></div>
+<div class="relative z-10 grid grid-cols-2 gap-md animate-float">
+<div class="space-y-md">
+<div class="glass-card p-base rounded-2xl border border-white/20 shadow-xl transform -rotate-3 hover:rotate-0 transition-all duration-500 overflow-hidden">
+<img class="w-full h-48 object-cover rounded-xl" data-alt="A sleek, high-fidelity mobile application interface for a financial dashboard featuring clean typography, dark blue accents, and vibrant data visualization charts. The UI reflects a professional, high-performance agency style with glassy elements and sharp details against a bright, minimalist background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuADRr0EMTCRcrBI1mdL4bDzoMmuJ0UPNqZR6ZP5jUSoYZ0aeZy4-5dHomiFoPkVNXUpAgvJW_kd4VpYdoFV9X8fRwn92ntRRtqFfMAUGfgD0SkDaDCHcxuAlRJbxOX7PP0reBTWvrqX4AWtET1Fu3kXcX0NMdIlRCp0POR3G871BiggYrBSkxCBvjgRA2PWr9vEUTmVVY5K6N7DzzwVEDfbI11w5TosSJHXTcCLJcUhQRBOu6HcBK-H9R7AGV5RF79m6Yfjm3YsyrbF"/>
+</div>
+<div class="glass-card p-base rounded-2xl border border-white/20 shadow-xl transform rotate-2 hover:rotate-0 transition-all duration-500 overflow-hidden">
+<img class="w-full h-64 object-cover rounded-xl" data-alt="A premium desktop website design for a luxury furniture brand, displaying large high-resolution images, generous white space, and elegant serif typography. The lighting is soft and natural, emphasizing a sophisticated light-mode aesthetic with warm stone-colored backdrops." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBf6oZw69jZe5gQ_Lr00KSvYiJRHe6qAkbM8QdVCnCDi2D5DsAdhEQCXsdVSsEcdOAapHDZkiLgxWHEhPb2t2tOlwqXLXYCzl9gpa8BpEQA5GbbAR3MYdDIFVG9HdV2Na1EEWUe2I15IBzV0Ee9pcmo6VB0_g0pdxh06tlOgvrijVixuKxXq7erdw5Lp_BcrEnpdvX-_M2C0dxxFD5t4nVkjhPtJ-FhrxOKEb2PbDc5fX9mfzy1JvuogwfyFPubcEBlh3Uz7EdB34l-"/>
+</div>
+</div>
+<div class="space-y-md pt-lg">
+<div class="glass-card p-base rounded-2xl border border-white/20 shadow-xl transform rotate-6 hover:rotate-0 transition-all duration-500 overflow-hidden">
+<img class="w-full h-72 object-cover rounded-xl" data-alt="A complex AI agent workflow visualization with glowing nodes and connecting lines in indigo and orange. The interface is dark-themed with glassmorphic panels and futuristic data streams, set against a high-contrast minimalist laboratory environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDapy6dfrYxfXRE89iNMVKibei1LKVgYjBacwdTcPbHkmedyGHkyWP0GZgvkXH7Un5vmEZ4FIsEdw3W_165nkH6qjoa5DwJalptP4mCk9kzL3OEZqsZsZIUd8fJCBY99k6ohzTInuuROwcUCZrYo81uxO4WPG2-ezV7sKHe05ig6K3NykOIUHWTZ5X3GMm5ClmVnpibA_ZDWNZ9oHC6aG_0L8jJLZMsIb6MtPw04eZ9xZBSQA39Cdove72v0Ul_8PfCXezgfR_Ij9u_"/>
+</div>
+<div class="glass-card p-base rounded-2xl border border-white/20 shadow-xl transform -rotate-2 hover:rotate-0 transition-all duration-500 overflow-hidden">
+<img class="w-full h-40 object-cover rounded-xl" data-alt="A tablet UI showing a real estate property management dashboard with map integrations and 3D architectural renders. The style is modern, professional, and clean, using a palette of deep slate and vivid amber accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfEqFqBYx80S-V4YIlWc0MH0URFtCZMU6S0EchBdEWiNuy1l-2Y_2hWp1DbCuv085NkXACR88W_21_QaxsNHM1YVPffaZKrZKf0GQbMcKxfM_qHIfNV52mVgjkMbrnoUY6zGZyJFFUA2GP4c1y_uII62J7JOsxySX1kFREN8Xxsd5SqgenB3lGb3YiIANFsUzBfE00PiSmFR8cSK7QWwSZOw8Tkt698lUCJIXgZ_LQ5crco4Kn2gcIeSenMZbS2pW9BoJbv36RiI84"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Services Section -->
+<section class="py-2xl bg-surface-bright" id="services">
+<div class="max-w-container-max mx-auto px-md">
+<div class="text-center mb-2xl">
+<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-md">Engineered Solutions</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto">We combine technical excellence with artistic flair to build products that dominate markets.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
+<!-- Card 1 -->
+<div class="gradient-border bg-white p-lg rounded-2xl hover:-translate-y-2 transition-all duration-300">
+<div class="w-12 h-12 bg-primary-fixed rounded-xl flex items-center justify-center text-primary mb-md">
+<span class="material-symbols-outlined">language</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-sm">Website Development</h3>
+<p class="text-on-surface-variant mb-md">High-performance, SEO-optimized web experiences built with Next.js and Framer Motion.</p>
+<ul class="space-y-xs">
+<li class="flex items-center gap-xs text-label-md font-label-md text-on-surface"><span class="material-symbols-outlined text-secondary scale-75">check_circle</span> Responsive Design</li>
+<li class="flex items-center gap-xs text-label-md font-label-md text-on-surface"><span class="material-symbols-outlined text-secondary scale-75">check_circle</span> Headless CMS</li>
+</ul>
+</div>
+<!-- Card 2 -->
+<div class="gradient-border bg-white p-lg rounded-2xl hover:-translate-y-2 transition-all duration-300">
+<div class="w-12 h-12 bg-secondary-fixed rounded-xl flex items-center justify-center text-secondary mb-md">
+<span class="material-symbols-outlined">smartphone</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-sm">Mobile App Development</h3>
+<p class="text-on-surface-variant mb-md">Native and cross-platform apps that provide seamless experiences across iOS and Android.</p>
+<ul class="space-y-xs">
+<li class="flex items-center gap-xs text-label-md font-label-md text-on-surface"><span class="material-symbols-outlined text-secondary scale-75">check_circle</span> React Native</li>
+<li class="flex items-center gap-xs text-label-md font-label-md text-on-surface"><span class="material-symbols-outlined text-secondary scale-75">check_circle</span> Smooth Animations</li>
+</ul>
+</div>
+<!-- Card 3 -->
+<div class="gradient-border bg-white p-lg rounded-2xl hover:-translate-y-2 transition-all duration-300">
+<div class="w-12 h-12 bg-tertiary-fixed rounded-xl flex items-center justify-center text-tertiary-container mb-md">
+<span class="material-symbols-outlined">psychology</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-sm">AI Agents</h3>
+<p class="text-on-surface-variant mb-md">Custom LLM integrations and autonomous agents that handle complex business logic.</p>
+<ul class="space-y-xs">
+<li class="flex items-center gap-xs text-label-md font-label-md text-on-surface"><span class="material-symbols-outlined text-secondary scale-75">check_circle</span> RAG Systems</li>
+<li class="flex items-center gap-xs text-label-md font-label-md text-on-surface"><span class="material-symbols-outlined text-secondary scale-75">check_circle</span> Multi-agent flows</li>
+</ul>
+</div>
+<!-- Card 4 -->
+<div class="gradient-border bg-white p-lg rounded-2xl hover:-translate-y-2 transition-all duration-300">
+<div class="w-12 h-12 bg-surface-container-high rounded-xl flex items-center justify-center text-primary mb-md">
+<span class="material-symbols-outlined">settings_suggest</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-sm">Business Automation</h3>
+<p class="text-on-surface-variant mb-md">Connect your favorite tools and eliminate manual tasks with advanced API integrations.</p>
+<ul class="space-y-xs">
+<li class="flex items-center gap-xs text-label-md font-label-md text-on-surface"><span class="material-symbols-outlined text-secondary scale-75">check_circle</span> Custom APIs</li>
+<li class="flex items-center gap-xs text-label-md font-label-md text-on-surface"><span class="material-symbols-outlined text-secondary scale-75">check_circle</span> Zapier/Make Expert</li>
+</ul>
+</div>
+<!-- Card 5 -->
+<div class="gradient-border bg-white p-lg rounded-2xl hover:-translate-y-2 transition-all duration-300">
+<div class="w-12 h-12 bg-primary-fixed-dim rounded-xl flex items-center justify-center text-on-primary-fixed mb-md">
+<span class="material-symbols-outlined">cloud_done</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-sm">SaaS Products</h3>
+<p class="text-on-surface-variant mb-md">Full-cycle SaaS development from MVP to global scale with robust architecture.</p>
+<ul class="space-y-xs">
+<li class="flex items-center gap-xs text-label-md font-label-md text-on-surface"><span class="material-symbols-outlined text-secondary scale-75">check_circle</span> Scalable Backend</li>
+<li class="flex items-center gap-xs text-label-md font-label-md text-on-surface"><span class="material-symbols-outlined text-secondary scale-75">check_circle</span> Secure Payments</li>
+</ul>
+</div>
+<!-- Card 6 -->
+<div class="gradient-border bg-white p-lg rounded-2xl hover:-translate-y-2 transition-all duration-300">
+<div class="w-12 h-12 bg-on-secondary-fixed-variant/20 rounded-xl flex items-center justify-center text-secondary mb-md">
+<span class="material-symbols-outlined">draw</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-sm">UI/UX Design</h3>
+<p class="text-on-surface-variant mb-md">Editorial-grade design that converts visitors into lifelong loyal customers.</p>
+<ul class="space-y-xs">
+<li class="flex items-center gap-xs text-label-md font-label-md text-on-surface"><span class="material-symbols-outlined text-secondary scale-75">check_circle</span> Design Systems</li>
+<li class="flex items-center gap-xs text-label-md font-label-md text-on-surface"><span class="material-symbols-outlined text-secondary scale-75">check_circle</span> Prototyping</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Portfolio Section -->
+<section class="py-2xl" id="portfolio">
+<div class="max-w-container-max mx-auto px-md">
+<div class="flex flex-col md:flex-row justify-between items-end mb-2xl gap-md">
+<div class="max-w-xl">
+<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-md">Selected Work</h2>
+<p class="text-on-surface-variant">Explore how we helped our clients redefine their digital presence with cutting-edge technology.</p>
+</div>
+<div class="flex gap-sm">
+<button class="w-12 h-12 rounded-full border border-outline flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all">
+<span class="material-symbols-outlined">west</span>
+</button>
+<button class="w-12 h-12 rounded-full border border-outline flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all">
+<span class="material-symbols-outlined">east</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
+<!-- Project 1 -->
+<div class="group cursor-pointer">
+<div class="relative overflow-hidden rounded-2xl mb-md h-80">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A modern E-commerce platform showcase featuring high-end fashion products. The UI is minimalist with a white background, sharp typography, and seamless transitions. The lighting is bright and clean, reflecting a premium editorial aesthetic with a soft stone-colored room context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBs0R7U_5PAVt3O3T-QU171i_qigt8BR1sw-Wd19BdDBl0eLs1A2jk4_-P03nCcsgS9mME1h5fWLNR1BBjFSAM2sPl37B9rpegt_10HWIU2vQoW-PnUu5On7Df8KiEk1frHXkvChkC3oLpZy3zvUx__Q7vKpTgQl7lF6DMbWAS0Elm_wkbwVDKBXOEtqMjj8GKWTYqAYy5Y4vXteNMPRoB-yoQt-gVpexyAtTMu4saNRrZAlsAA7fSSfvYJemxD_b475AuKRwAAlwlp"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-lg">
+<span class="text-on-primary font-label-md uppercase tracking-widest">+ View Case Study</span>
+</div>
+</div>
+<p class="text-secondary font-label-sm-mono uppercase tracking-widest mb-xs">Next.js • Shopify • Tailwind</p>
+<h4 class="font-headline-md text-headline-md mb-xs">Luxe Commerce Platform</h4>
+<p class="text-on-surface-variant">Increased conversion by 145% through optimized checkout flows.</p>
+</div>
+<!-- Project 2 -->
+<div class="group cursor-pointer">
+<div class="relative overflow-hidden rounded-2xl mb-md h-80">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A futuristic AI Customer Support Agent interface with a holographic avatar and glowing data bubbles. The dashboard shows real-time conversation analysis and sentiment tracking. The mood is high-tech, using deep navy blues and vibrant indigo lighting in a dark professional studio setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAl5_C0SB3n60LKUEccZQ7YMiQ1uzw2gozW_-3euZX409TwG0InCoXsp4D1T-qHkx62yhSbz3JGHJHefMe49wrEMni2xPSXrrFXDTI6O1YCW3bFk1qM21eF3OtKoxrsE1vwgCWuADz5ZPuwQvz6FzEmW-fdSZ4OyUBdhneHxTQvH7Ip9jhqdv3DQyprVTcBPU4A5lQ1RUNKEMeDbAJfYXYogbwzXwgzNr_JAo0nWIOCCyY4CJiRVuP1SHC7hXyFgO6TFzt_7QUxJBEC"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-lg">
+<span class="text-on-primary font-label-md uppercase tracking-widest">+ View Case Study</span>
+</div>
+</div>
+<p class="text-secondary font-label-sm-mono uppercase tracking-widest mb-xs">OpenAI • Python • Node.js</p>
+<h4 class="font-headline-md text-headline-md mb-xs">AI Support Ecosystem</h4>
+<p class="text-on-surface-variant">Automated 80% of routine inquiries with 98% accuracy.</p>
+</div>
+<!-- Project 3 -->
+<div class="group cursor-pointer">
+<div class="relative overflow-hidden rounded-2xl mb-md h-80">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A real estate mobile application showing a map with interactive property pins and high-resolution villa photos. The UI is elegant and airy, featuring glassmorphic search bars and a clean, stone-toned color palette with subtle orange highlights. Professional architectural photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcSm3uipK8L1IOcLSqQRl2lpwpf7mu-3b__VozVrGlbMtS3AfoqELJdX6aoY3OZCXQtffO_IuBrO6Q95xy8SDlR4zJk7IltOQJZc2PHkVxOGTxsSmZEskkamiB7JSFDnR_FtL5NpsqbDPRHwumBXMyl4XCQvkI64tgtA8RLPZk0gQG4H-MA4SkRRsfgH9xbP7E9CtFdGt-x7rQZLGIZb10VetVsKFXIeM0Awy_5M5GODiMRGFOLh30LIzme7BtmQ03ONleloarTzYT"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-lg">
+<span class="text-on-primary font-label-md uppercase tracking-widest">+ View Case Study</span>
+</div>
+</div>
+<p class="text-secondary font-label-sm-mono uppercase tracking-widest mb-xs">React Native • Google Maps • Firebase</p>
+<h4 class="font-headline-md text-headline-md mb-xs">Estate Navigator Pro</h4>
+<p class="text-on-surface-variant">Generated $12M in leads within the first three months of launch.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Metrics Section -->
+<section class="py-2xl bg-primary text-on-primary">
+<div class="max-w-container-max mx-auto px-md">
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-xl">
+<div class="text-center">
+<span class="font-display-lg text-display-lg-mobile md:text-display-lg block mb-xs">50+</span>
+<p class="font-label-sm-mono uppercase tracking-widest text-on-primary-fixed-variant">Projects Delivered</p>
+</div>
+<div class="text-center border-l border-white/10">
+<span class="font-display-lg text-display-lg-mobile md:text-display-lg block mb-xs">20+</span>
+<p class="font-label-sm-mono uppercase tracking-widest text-on-primary-fixed-variant">Happy Clients</p>
+</div>
+<div class="text-center border-l border-white/10">
+<span class="font-display-lg text-display-lg-mobile md:text-display-lg block mb-xs">95%</span>
+<p class="font-label-sm-mono uppercase tracking-widest text-on-primary-fixed-variant">Satisfaction Rate</p>
+</div>
+<div class="text-center border-l border-white/10">
+<span class="font-display-lg text-display-lg-mobile md:text-display-lg block mb-xs">24/7</span>
+<p class="font-label-sm-mono uppercase tracking-widest text-on-primary-fixed-variant">Active Support</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Process Section -->
+<section class="py-2xl overflow-hidden" id="process">
+<div class="max-w-container-max mx-auto px-md">
+<div class="text-center mb-2xl">
+<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-md">Our Proven Process</h2>
+<p class="text-on-surface-variant">A streamlined methodology designed for speed and technical precision.</p>
+</div>
+<div class="relative">
+<div class="hidden lg:block absolute top-1/2 left-0 w-full h-[1px] bg-surface-variant border-t-2 border-dashed border-outline-variant -translate-y-1/2"></div>
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-lg">
+<!-- Step 1 -->
+<div class="relative z-10 text-center lg:text-left">
+<div class="w-12 h-12 bg-primary text-on-primary rounded-full flex items-center justify-center mx-auto lg:mx-0 mb-md font-bold shadow-xl">1</div>
+<h5 class="font-headline-md text-body-lg font-bold mb-xs">Discovery Call</h5>
+<p class="text-on-surface-variant text-label-md">We dive deep into your goals and technical requirements.</p>
+</div>
+<!-- Step 2 -->
+<div class="relative z-10 text-center lg:text-left">
+<div class="w-12 h-12 bg-white border-2 border-primary text-primary rounded-full flex items-center justify-center mx-auto lg:mx-0 mb-md font-bold shadow-xl">2</div>
+<h5 class="font-headline-md text-body-lg font-bold mb-xs">Strategy</h5>
+<p class="text-on-surface-variant text-label-md">Defining architecture, timelines, and precise roadmaps.</p>
+</div>
+<!-- Step 3 -->
+<div class="relative z-10 text-center lg:text-left">
+<div class="w-12 h-12 bg-white border-2 border-primary text-primary rounded-full flex items-center justify-center mx-auto lg:mx-0 mb-md font-bold shadow-xl">3</div>
+<h5 class="font-headline-md text-body-lg font-bold mb-xs">Design &amp; Dev</h5>
+<p class="text-on-surface-variant text-label-md">Agile development cycles with continuous client feedback.</p>
+</div>
+<!-- Step 4 -->
+<div class="relative z-10 text-center lg:text-left">
+<div class="w-12 h-12 bg-white border-2 border-primary text-primary rounded-full flex items-center justify-center mx-auto lg:mx-0 mb-md font-bold shadow-xl">4</div>
+<h5 class="font-headline-md text-body-lg font-bold mb-xs">Launch</h5>
+<p class="text-on-surface-variant text-label-md">Rigorous testing followed by a seamless global deployment.</p>
+</div>
+<!-- Step 5 -->
+<div class="relative z-10 text-center lg:text-left">
+<div class="w-12 h-12 bg-secondary text-on-secondary rounded-full flex items-center justify-center mx-auto lg:mx-0 mb-md font-bold shadow-xl">5</div>
+<h5 class="font-headline-md text-body-lg font-bold mb-xs">Growth</h5>
+<p class="text-on-surface-variant text-label-md">Post-launch monitoring and scaling for massive user growth.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- AI Agents Showcase -->
+<section class="py-2xl bg-surface-container-low relative overflow-hidden">
+
+<div class="max-w-container-max mx-auto px-md relative z-10">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-2xl items-center">
+<div>
+<span class="text-secondary font-label-sm-mono uppercase tracking-widest mb-md block">Intelligence First</span>
+<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-lg">Custom AI Agents for Your Ecosystem</h2>
+<div class="space-y-lg">
+<div class="flex gap-md">
+<div class="w-10 h-10 shrink-0 bg-primary rounded-full flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[20px]">support_agent</span>
+</div>
+<div>
+<h6 class="font-bold text-lg">Customer Support AI</h6>
+<p class="text-on-surface-variant text-sm">24/7 intelligent ticket resolution and user assistance across all channels.</p>
+</div>
+</div>
+<div class="flex gap-md">
+<div class="w-10 h-10 shrink-0 bg-primary rounded-full flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[20px]">leaderboard</span>
+</div>
+<div>
+<h6 class="font-bold text-lg">Lead Gen &amp; Sales</h6>
+<p class="text-on-surface-variant text-sm">Autonomous agents that qualify leads and schedule meetings while you sleep.</p>
+</div>
+</div>
+<div class="flex gap-md">
+<div class="w-10 h-10 shrink-0 bg-primary rounded-full flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+</div>
+<div>
+<h6 class="font-bold text-lg">WhatsApp Business AI</h6>
+<p class="text-on-surface-variant text-sm">Deploy sophisticated conversational bots on the world's most popular chat app.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="glass-card p-lg rounded-3xl border border-white/40 shadow-2xl">
+<div class="flex items-center gap-sm mb-lg border-b border-surface-variant pb-md">
+<div class="w-3 h-3 rounded-full bg-error"></div>
+<div class="w-3 h-3 rounded-full bg-secondary-container"></div>
+<div class="w-3 h-3 rounded-full bg-secondary-fixed-dim"></div>
+<span class="text-xs font-label-sm-mono ml-auto">ai_workflow_v2.0.exe</span>
+</div>
+<div class="space-y-md">
+<div class="bg-primary/5 p-md rounded-xl border border-primary/10 flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<div class="w-2 h-2 rounded-full bg-secondary animate-pulse"></div>
+<span class="text-sm font-label-md">Listening for triggers...</span>
+</div>
+<span class="text-xs font-mono opacity-50">0.02ms</span>
+</div>
+<div class="p-md rounded-xl bg-white border border-surface-variant shadow-sm ml-md">
+<p class="text-xs font-mono mb-sm text-secondary">AGENT_RESPONSE:</p>
+<p class="text-sm">"Based on the user's inquiry about pricing, I'm initiating the 'Growth Plan' sales sequence."</p>
+</div>
+<div class="bg-primary/5 p-md rounded-xl border border-primary/10 flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">sync_alt</span>
+<span class="text-sm font-label-md">Connecting to CRM &amp; Stripe...</span>
+</div>
+<div class="p-md rounded-xl bg-primary text-on-primary shadow-lg ml-md">
+<p class="text-sm">Meeting scheduled for tomorrow at 2:00 PM. Proposal PDF generated and sent via Email.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing Section -->
+<section class="py-2xl" id="pricing">
+<div class="max-w-container-max mx-auto px-md">
+<div class="text-center mb-2xl">
+<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-md">Fair &amp; Transparent</h2>
+<p class="text-on-surface-variant">Choose the partnership level that matches your current stage of growth.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg max-w-5xl mx-auto">
+<!-- Starter -->
+<div class="bg-white p-lg rounded-2xl border border-surface-variant flex flex-col hover:border-primary transition-all">
+<h4 class="font-headline-md text-headline-md mb-xs">Starter</h4>
+<p class="text-on-surface-variant text-sm mb-lg">For early-stage startups needing an MVP.</p>
+<div class="mb-lg">
+<span class="text-4xl font-bold">₹2,49,999</span>
+<span class="text-on-surface-variant">/project</span>
+</div>
+<ul class="space-y-sm mb-xl grow">
+<li class="flex items-center gap-xs text-sm"><span class="material-symbols-outlined text-primary scale-75">check</span> 1 Major Project at a time</li>
+<li class="flex items-center gap-xs text-sm"><span class="material-symbols-outlined text-primary scale-75">check</span> Design &amp; Development</li>
+<li class="flex items-center gap-xs text-sm"><span class="material-symbols-outlined text-primary scale-75">check</span> Weekly Strategy Calls</li>
+<li class="flex items-center gap-xs text-sm opacity-30"><span class="material-symbols-outlined scale-75">close</span> AI Agent Integration</li>
+</ul>
+<button class="w-full py-sm rounded-xl border border-primary font-bold hover:bg-primary hover:text-on-primary transition-all">Get Started</button>
+</div>
+<!-- Growth -->
+<div class="bg-primary text-on-primary p-lg rounded-2xl border-2 border-secondary relative overflow-hidden flex flex-col transform md:-translate-y-4 shadow-2xl">
+<div class="absolute top-4 right-4 bg-secondary text-on-secondary px-xs py-1 rounded text-[10px] font-bold uppercase">Popular</div>
+<h4 class="font-headline-md text-headline-md mb-xs">Growth</h4>
+<p class="text-on-primary-fixed-variant text-sm mb-lg">For scaling businesses needing full capacity.</p>
+<div class="mb-lg">
+<span class="text-4xl font-bold">₹4,99,999</span>
+<span class="text-on-primary-fixed-variant">/project</span>
+</div>
+<ul class="space-y-sm mb-xl grow">
+<li class="flex items-center gap-xs text-sm"><span class="material-symbols-outlined text-secondary scale-75">check</span> 2 Major Projects concurrently</li>
+<li class="flex items-center gap-xs text-sm"><span class="material-symbols-outlined text-secondary scale-75">check</span> Priority Support &amp; Devs</li>
+<li class="flex items-center gap-xs text-sm"><span class="material-symbols-outlined text-secondary scale-75">check</span> Custom AI Agent Design</li>
+<li class="flex items-center gap-xs text-sm"><span class="material-symbols-outlined text-secondary scale-75">check</span> Business Automation Hub</li>
+</ul>
+<button class="w-full py-sm rounded-xl bg-secondary text-on-secondary font-bold hover:opacity-90 transition-all">Select Growth</button>
+</div>
+<!-- Enterprise -->
+<div class="bg-white p-lg rounded-2xl border border-surface-variant flex flex-col hover:border-primary transition-all">
+<h4 class="font-headline-md text-headline-md mb-xs">Enterprise</h4>
+<p class="text-on-surface-variant text-sm mb-lg">Custom solutions for massive scale.</p>
+<div class="mb-lg">
+<span class="text-4xl font-bold">Custom</span>
+</div>
+<ul class="space-y-sm mb-xl grow">
+<li class="flex items-center gap-xs text-sm"><span class="material-symbols-outlined text-primary scale-75">check</span> Dedicated Engineering Team</li>
+<li class="flex items-center gap-xs text-sm"><span class="material-symbols-outlined text-primary scale-75">check</span> On-site Consultation</li>
+<li class="flex items-center gap-xs text-sm"><span class="material-symbols-outlined text-primary scale-75">check</span> Infrastructure Audits</li>
+<li class="flex items-center gap-xs text-sm"><span class="material-symbols-outlined text-primary scale-75">check</span> White-glove Support</li>
+</ul>
+<button class="w-full py-sm rounded-xl border border-primary font-bold hover:bg-primary hover:text-on-primary transition-all">Contact Us</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Form Section -->
+<section class="py-2xl px-md bg-surface-bright" id="contact">
+  <div class="max-w-container-max mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-2xl items-center">
+      <!-- Left: Info -->
+      <div>
+        <span class="text-secondary font-label-sm-mono uppercase tracking-widest mb-md block">Get In Touch</span>
+        <h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-lg">Let's Build Something <span class="text-secondary italic">Extraordinary.</span></h2>
+        <p class="text-on-surface-variant mb-xl text-body-lg">Share your vision and we'll respond within 24 hours with a tailored proposal. No fluff, just pure engineering excellence.</p>
+        <div class="space-y-lg">
+          <div class="flex items-center gap-md">
+            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-on-primary shrink-0">
+              <span class="material-symbols-outlined">mail</span>
+            </div>
+            <div>
+              <p class="font-bold text-primary">Email Us</p>
+              <a href="mailto:gajavellisaiteja007@gmail.com" class="text-secondary hover:underline">gajavellisaiteja007@gmail.com</a>
+            </div>
+          </div>
+          <div class="flex items-center gap-md">
+            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-on-primary shrink-0">
+              <span class="material-symbols-outlined">schedule</span>
+            </div>
+            <div>
+              <p class="font-bold text-primary">Response Time</p>
+              <p class="text-on-surface-variant">Within 24 hours, guaranteed</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-md">
+            <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-on-secondary shrink-0">
+              <span class="material-symbols-outlined">currency_rupee</span>
+            </div>
+            <div>
+              <p class="font-bold text-primary">Pricing</p>
+              <p class="text-on-surface-variant">Starting from ₹2,49,999 per project</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Right: Form -->
+      <div class="bg-white rounded-3xl p-lg md:p-2xl shadow-2xl border border-surface-variant">
+        <form id="contact-form" action="https://formspree.io/f/xdkzqpqa" method="POST" class="space-y-md">
+          <input type="hidden" name="_replyto" value="gajavellisaiteja007@gmail.com">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
+            <div>
+              <label class="block text-sm font-bold text-primary mb-xs" for="contact-name">Your Name *</label>
+              <input id="contact-name" type="text" name="name" required placeholder="Rahul Sharma" class="w-full border border-surface-variant rounded-xl px-md py-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-on-surface bg-surface-bright" />
+            </div>
+            <div>
+              <label class="block text-sm font-bold text-primary mb-xs" for="contact-email">Email Address *</label>
+              <input id="contact-email" type="email" name="email" required placeholder="rahul@company.com" class="w-full border border-surface-variant rounded-xl px-md py-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-on-surface bg-surface-bright" />
+            </div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
+            <div>
+              <label class="block text-sm font-bold text-primary mb-xs" for="contact-service">Service Needed *</label>
+              <select id="contact-service" name="service" required class="w-full border border-surface-variant rounded-xl px-md py-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-on-surface bg-surface-bright">
+                <option value="" disabled selected>Select a service</option>
+                <option value="Website Development">Website Development</option>
+                <option value="Mobile App">Mobile App Development</option>
+                <option value="AI Agent">AI Agent / Automation</option>
+                <option value="SaaS Product">SaaS Product</option>
+                <option value="UI/UX Design">UI/UX Design</option>
+                <option value="Other">Other / Not Sure</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-bold text-primary mb-xs" for="contact-budget">Budget Range (₹) *</label>
+              <select id="contact-budget" name="budget" required class="w-full border border-surface-variant rounded-xl px-md py-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-on-surface bg-surface-bright">
+                <option value="" disabled selected>Select budget</option>
+                <option value="Under ₹1L">Under ₹1,00,000</option>
+                <option value="₹1L - ₹2.5L">₹1,00,000 – ₹2,50,000</option>
+                <option value="₹2.5L - ₹5L">₹2,50,000 – ₹5,00,000</option>
+                <option value="₹5L - ₹10L">₹5,00,000 – ₹10,00,000</option>
+                <option value="Above ₹10L">Above ₹10,00,000</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-bold text-primary mb-xs" for="contact-message">Tell Us About Your Project *</label>
+            <textarea id="contact-message" name="message" required rows="5" placeholder="Describe your project goals, timeline, and any specific requirements..." class="w-full border border-surface-variant rounded-xl px-md py-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-on-surface bg-surface-bright resize-none"></textarea>
+          </div>
+          <button id="contact-submit" type="submit" class="w-full bg-primary text-on-primary py-sm rounded-xl font-bold text-lg hover:scale-[1.02] active:scale-95 transition-all shadow-lg flex items-center justify-center gap-sm">
+            <span id="btn-text">Send Message</span>
+            <span class="material-symbols-outlined" id="btn-icon">send</span>
+          </button>
+          <p class="text-xs text-on-surface-variant text-center">🔒 Your information is secure. We never share your data.</p>
+        </form>
+        <div id="form-success" class="hidden text-center py-xl">
+          <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-md">
+            <span class="material-symbols-outlined text-green-600 text-5xl">check_circle</span>
+          </div>
+          <h3 class="font-bold text-2xl text-primary mb-sm">Message Sent! 🎉</h3>
+          <p class="text-on-surface-variant">We'll get back to you within 24 hours with a tailored proposal.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Final CTA -->
+<section class="py-2xl px-md" id="cta">
+  <div class="max-w-container-max mx-auto bg-primary-container rounded-[2rem] p-lg md:p-2xl text-center relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-20">
+      <div class="absolute -top-1/2 -left-1/4 w-full h-full bg-secondary blur-[150px] rounded-full"></div>
+      <div class="absolute -bottom-1/2 -right-1/4 w-full h-full bg-tertiary-container blur-[150px] rounded-full"></div>
+    </div>
+    <div class="relative z-10">
+      <h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-primary mb-md">Ready to Build Your Next Digital Product?</h2>
+      <p class="text-on-primary-container mb-lg max-w-xl mx-auto">Let's turn your vision into a high-performance reality. Book a strategy call with our engineering team today.</p>
+      <div class="flex flex-col sm:flex-row gap-md justify-center">
+        <a class="bg-secondary text-on-secondary px-lg py-sm rounded-xl font-headline-md text-body-lg hover:scale-105 active:scale-95 transition-all" href="#contact">Send Us a Message</a>
+        <a class="bg-white text-primary px-lg py-sm rounded-xl font-headline-md text-body-lg hover:scale-105 active:scale-95 transition-all" href="mailto:gajavellisaiteja007@gmail.com">Email Directly</a>
+      </div>
+      <div class="mt-lg flex items-center justify-center gap-md">
+        <div class="flex -space-x-4">
+          <img class="w-10 h-10 rounded-full border-2 border-white object-cover" data-alt="Close up portrait of a professional male tech founder with a friendly expression, soft studio lighting, professional corporate aesthetic, blurred office background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWWX-rbgRgxNin7Sff1d4g-4YqlT6gry6Z-N2Brf_7ogVwT6mLcxCke4GO9u2LoqPpN_1-n3VxF5CZP3MfLdsFSr6klN-Szc0no9rIVzitUGMRUvBTde-ujBLQx4MlmIoqwpyGxZJPDrDdnle6FYwc94ZRCCL3hq831S0giLdnfdh2pFQ0JuN6emtY7uVEjZ6Un3zQH1P9MOtbmuuFBsZegj4LIzNmOFTEfI_mPWyGmJhK6UcQd0ihu905GspdwF0ksmrFh7A2SfwS"/>
+          <img class="w-10 h-10 rounded-full border-2 border-white object-cover" data-alt="Close up portrait of a female creative director looking confident, professional lighting, modern minimalist style, high-end photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvYPMtnPawTtk0Ck1EEzLtJTohFtDjaDAvvHPg1D1pXTM2CUsag-qUDABkjQ4kaSgsKYQrRZk14zgNT9iU7OUItqJZp1hmIRhiBe_6klfAwOezjHiEqJG5rzVHtWL8Fe3_EoRHb7iQyWOBpVTSqyRX6ZBpo4ra5pBW03JaBlsRoPt7pDq12y7iWQRr_7zqDRHIV2ghExg5KCXZ_Iq1BidgVbtFFT2F39kiza8tMk4MVjZGZ7fkuQ3QZkwmjlg4AnIzhRrILegZHQia"/>
+          <img class="w-10 h-10 rounded-full border-2 border-white object-cover" data-alt="Portrait of a young male lead engineer smiling, clean-cut, professional studio lighting, tech industry look." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVXerx9jdi3CWesfOKKcd9s0NVBOOAli-t2ha5Yw4eNaLBCVIge1DdVjLM44-PNQTSHrEzZef0bhTRv5EmHiTU0r4piFnCnSGALPsPBitQxhBdXLlB4ZceDGUMHnvA4kyjmebGn-1E-9vvTZX6cUVR0v9lkHRWC5um8WO0GhldFKa6qop0kDYrg6aPUtckyYMfdgH0WP8By6DVKJ7eXgB0esIb4YJ8WjA67C-090Da-GCzM-HGGWLf2ZoZAtOq2uHbH_rFjfNlL0rT"/>
+        </div>
+        <p class="text-on-primary-container text-sm">Join 20+ successful founders</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-background py-xl border-t border-surface-variant">
+<div class="max-w-container-max mx-auto px-lg flex flex-col md:flex-row justify-between items-start gap-xl">
+<div class="max-w-xs">
+<div class="font-display-lg text-display-lg font-bold text-primary mb-md">TEJA LABS</div>
+<p class="text-on-surface-variant mb-lg">Engineered luxury for the digital age. We build products that scale and inspire.</p>
+<div class="flex gap-md">
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all" href="#">
+<span class="material-symbols-outlined text-lg">public</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all" href="#">
+<span class="material-symbols-outlined text-lg">terminal</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all" href="#">
+<span class="material-symbols-outlined text-lg">mail</span>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-xl w-full md:w-auto">
+<div>
+<h5 class="font-bold text-sm uppercase tracking-widest mb-md">Services</h5>
+<ul class="space-y-sm">
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Web Dev</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Mobile Apps</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">AI Agents</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">UI/UX Design</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold text-sm uppercase tracking-widest mb-md">Company</h5>
+<ul class="space-y-sm">
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Portfolio</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Process</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Pricing</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Contact</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold text-sm uppercase tracking-widest mb-md">Legal</h5>
+<ul class="space-y-sm">
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Privacy</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Terms</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-lg mt-xl pt-lg border-t border-surface-variant flex flex-col sm:flex-row justify-between items-center gap-md">
+<p class="text-on-surface-variant text-sm font-label-md">© 2024 Teja Labs. Engineered Luxury.</p>
+<div class="flex items-center gap-sm">
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+<p class="text-xs font-label-sm-mono text-on-surface-variant uppercase tracking-widest">Systems Operational</p>
+</div>
+</div>
+</footer>
+<script>
+        // Simple scroll reveal interaction
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+            observer.observe(section);
+        });
+
+        // Navbar shrink on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.remove('mt-6', 'w-[90%]');
+                header.classList.add('mt-0', 'w-full', 'rounded-none');
+            } else {
+                header.classList.add('mt-6', 'w-[90%]');
+                header.classList.remove('mt-0', 'w-full', 'rounded-none');
+            }
+        });
+
+        // Contact Form Submission via Formspree
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const btn = document.getElementById('contact-submit');
+                const btnText = document.getElementById('btn-text');
+                const btnIcon = document.getElementById('btn-icon');
+
+                // Loading state
+                btn.disabled = true;
+                btnText.textContent = 'Sending...';
+                btnIcon.textContent = 'hourglass_empty';
+                btn.classList.add('opacity-75');
+
+                try {
+                    const response = await fetch(contactForm.action, {
+                        method: 'POST',
+                        body: new FormData(contactForm),
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    if (response.ok) {
+                        contactForm.classList.add('hidden');
+                        document.getElementById('form-success').classList.remove('hidden');
+                    } else {
+                        throw new Error('Network response was not ok');
+                    }
+                } catch (error) {
+                    btnText.textContent = 'Failed — Try Again';
+                    btnIcon.textContent = 'error';
+                    btn.disabled = false;
+                    btn.classList.remove('opacity-75');
+                    btn.classList.add('bg-red-600');
+                }
+            });
+        }
+    </script>
+</body></html>

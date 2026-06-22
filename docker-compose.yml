@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      - APP_ENV=production
+      - DATABASE_URL=postgresql://teja:secret@db:5432/teja_agency
+    volumes:
+      # Mount for SQLite persistence (only relevant when not using postgres)
+      - sqlite_data:/app
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: teja
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: teja_agency
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U teja -d teja_agency"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    # Don't expose to host by default (only accessible within Docker network)
+    # ports:
+    #   - "5432:5432"
+
+volumes:
+  postgres_data:
+  sqlite_data:
