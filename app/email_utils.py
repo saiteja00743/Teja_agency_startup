@@ -19,7 +19,7 @@ def send_lead_notification(name: str, email: str, phone: str, service: str, budg
 
     try:
         msg = MIMEMultipart("alternative")
-        msg["Subject"] = f"🔥 New Lead from {name} — Teja Labs"
+        msg["Subject"] = f"🔥 New Lead from {name} — Sai Creator"
         msg["From"] = settings.SMTP_USER
         msg["To"] = settings.NOTIFICATION_EMAIL
 
@@ -32,7 +32,7 @@ def send_lead_notification(name: str, email: str, phone: str, service: str, budg
             <div style="background: #000; padding: 32px; text-align: center;">
               <h1 style="color: white; margin: 0; font-size: 24px;">🔥 New Lead!</h1>
               <p style="color: rgba(255,255,255,0.6); margin: 8px 0 0; font-size: 14px;">
-                Someone submitted the contact form on Teja Labs
+                Someone submitted the contact form on Sai Creator
               </p>
             </div>
             <div style="padding: 32px;">

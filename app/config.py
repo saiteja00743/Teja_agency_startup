@@ -5,7 +5,7 @@ import secrets
 
 class Settings(BaseSettings):
     # App
-    APP_NAME: str = "Teja Labs"
+    APP_NAME: str = "Sai Creator"
     APP_ENV: str = "development"
     SECRET_KEY: str = secrets.token_hex(32)
     ADMIN_PASSWORD: str = "admin123"  # Change this in production!

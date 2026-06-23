@@ -27,7 +27,7 @@ def send_email(name: str, email: str, phone: str, service: str, budget: str, mes
 
     try:
         msg = MIMEMultipart("alternative")
-        msg["Subject"] = f"🔥 New Lead from {name} — Teja Labs"
+        msg["Subject"] = f"🔥 New Lead from {name} — Sai Creations"
         msg["From"] = smtp_user
         msg["To"] = notify_email
 
@@ -40,7 +40,7 @@ def send_email(name: str, email: str, phone: str, service: str, budget: str, mes
             <div style="background: #000; padding: 32px; text-align: center;">
               <h1 style="color: white; margin: 0; font-size: 24px;">🔥 New Lead!</h1>
               <p style="color: rgba(255,255,255,0.6); margin: 8px 0 0; font-size: 14px;">
-                Someone submitted the contact form on Teja Labs
+                Someone submitted the contact form on Sai Creations
               </p>
             </div>
             <div style="padding: 32px;">
@@ -109,7 +109,7 @@ class handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         if self.path == "/api/health" or self.path.startswith("/api/health?"):
-            self._send_json(200, {"status": "ok", "app": "Teja Labs"})
+            self._send_json(200, {"status": "ok", "app": "Sai Creations"})
         else:
             self._send_json(404, {"detail": "Not found"})
 

@@ -1,5 +1,5 @@
 ---
-name: Teja Labs
+name: Sai Creator
 colors:
   surface: '#f9f9f8'
   surface-dim: '#dadad9'

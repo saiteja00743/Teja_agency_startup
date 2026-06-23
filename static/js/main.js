@@ -1,4 +1,4 @@
-/* ── main.js — Teja Labs Frontend Logic ──────────────────────────────────── */
+/* ── main.js — Sai Creator Frontend Logic ──────────────────────────────────── */
 
 /* ── Scroll Reveal ────────────────────────────────────────────────────────── */
 const revealObserver = new IntersectionObserver((entries) => {

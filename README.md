@@ -1,6 +1,6 @@
-# Teja Labs — Full-Stack Agency Website
+# Sai Creator — Full-Stack Agency Website
 
-A production-grade **FastAPI** web application for the Teja Labs digital agency.
+A production-grade **FastAPI** web application for the Sai Creator digital agency.
 
 ---
 
