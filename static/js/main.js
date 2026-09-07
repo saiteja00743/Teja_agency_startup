@@ -75,13 +75,8 @@ function showToast(type, title, message) {
   titleEl.textContent = title;
   msgEl.textContent   = message;
 
-  if (type === 'success') {
-    icon.className = 'w-10 h-10 rounded-full flex items-center justify-center shrink-0 bg-green-100 text-green-600';
-    icon.innerHTML = '<span class="material-symbols-outlined text-xl">check_circle</span>';
-  } else {
-    icon.className = 'w-10 h-10 rounded-full flex items-center justify-center shrink-0 bg-red-100 text-red-600';
-    icon.innerHTML = '<span class="material-symbols-outlined text-xl">error</span>';
-  }
+  icon.className = 'toast-icon';
+  icon.style.background = type === 'success' ? 'var(--lime)' : 'var(--orange)';
 
   toast.classList.remove('hidden');
   clearTimeout(toastTimer);
